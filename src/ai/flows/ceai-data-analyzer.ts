@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -35,15 +36,20 @@ const analyzeCEAISurveyDataPrompt = ai.definePrompt({
 
 You will receive a CSV file containing CEAI survey responses. Your task is to process this data, compute custom scores for five dimensions, perform reliability analysis, and generate a structured text-based summary.
 
-Please format the output in a clean and professional style. Use bold text for section headings and subheadings instead of Markdown symbols like '#', '##', or '*'. Avoid code blocks or bullet points unless necessary. Structure the report with proper line breaks and spacing for readability.
+Please format the output as **plain text** in a clean and professional style.
+- **Do not use Markdown symbols** like '#', '##', or '*' for headings or lists.
+- **Do not use any markup (like HTML tags or Markdown emphasis like '**' or '__') for bolding.** Headings and subheadings should be plain text.
+- Rely on clear structure, line breaks, and spacing for readability and to distinguish sections.
+- Avoid code blocks unless the data itself is code.
+- For lists, if necessary, use simple numbered lists (e.g., "1. Item") or plain text descriptions rather than Markdown bullet points ('*' or '-').
 
 Instructions:
 
 1.  **Input Data**: The CSV data is: {{{csvData}}}.
 2.  **Processing**: Validate the input, compute scores, perform reliability analysis, and breakdown by department if applicable.
-3.  **Output**: Return a text-based summary with clear bold headings, sub-headings, and well-structured content, including overall averages, reliability metrics (Cronbach’s alpha), and department breakdowns if available.
+3.  **Output**: Return a **plain text-based summary**. Headings and sub-headings should be clear and distinguished by the text's structure and context (not by special characters or markup). The content should be well-structured, including overall averages, reliability metrics (Cronbach’s alpha), and department breakdowns if available.
 
-Ensure the output is well-formatted and easy to understand.
+Ensure the output is well-formatted and easy to understand, adhering strictly to plain text without any special formatting characters or tags.
 `,
 });
 
@@ -58,3 +64,4 @@ const analyzeCEAISurveyDataFlow = ai.defineFlow(
     return output!;
   }
 );
+
