@@ -33,9 +33,7 @@ export default function Home() {
         </Card>
       </div>
       <footer className="w-full text-center p-6 mt-8">
-        <p className="text-xs sm:text-sm text-muted-foreground">
-          Powered by Advanced AI Analytics &copy; {new Date().getFullYear()}
-        </p>
+        
       </footer>
     </main>
   );
