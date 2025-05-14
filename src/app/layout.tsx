@@ -28,6 +28,9 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         {children}
         <Toaster />
+        <footer className="w-full text-center p-4 mt-8">
+          Built By: NahaInc
+        </footer>
       </body>
     </html>
   );
