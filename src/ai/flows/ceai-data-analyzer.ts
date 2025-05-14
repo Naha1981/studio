@@ -35,11 +35,13 @@ const analyzeCEAISurveyDataPrompt = ai.definePrompt({
 
 You will receive a CSV file containing CEAI survey responses. Your task is to process this data, compute custom scores for five dimensions, perform reliability analysis, and generate a structured text-based summary.
 
+Please format the output in a clean and professional style. Use bold text for section headings and subheadings instead of Markdown symbols like '#', '##', or '*'. Avoid code blocks or bullet points unless necessary. Structure the report with proper line breaks and spacing for readability.
+
 Instructions:
 
 1.  **Input Data**: The CSV data is: {{{csvData}}}.
 2.  **Processing**: Validate the input, compute scores, perform reliability analysis, and breakdown by department if applicable.
-3.  **Output**: Return a text-based summary with clear headings, sub-headings, and bullet points, including overall averages, reliability metrics (Cronbach’s alpha), and department breakdowns if available.
+3.  **Output**: Return a text-based summary with clear bold headings, sub-headings, and well-structured content, including overall averages, reliability metrics (Cronbach’s alpha), and department breakdowns if available.
 
 Ensure the output is well-formatted and easy to understand.
 `,
