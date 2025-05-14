@@ -20,7 +20,7 @@ const AnalyzeCEAISurveyDataInputSchema = z.object({
 export type AnalyzeCEAISurveyDataInput = z.infer<typeof AnalyzeCEAISurveyDataInputSchema>;
 
 const AnalyzeCEAISurveyDataOutputSchema = z.object({
-  summary: z.string().describe('A text-based summary report of the CEAI survey data.'),
+  summary: z.string().describe('A text-based summary report of the CEAI survey data, formatted with Markdown for bolding and bullet points.'),
 });
 export type AnalyzeCEAISurveyDataOutput = z.infer<typeof AnalyzeCEAISurveyDataOutputSchema>;
 
@@ -36,20 +36,26 @@ const analyzeCEAISurveyDataPrompt = ai.definePrompt({
 
 You will receive a CSV file containing CEAI survey responses. Your task is to process this data, compute custom scores for five dimensions, perform reliability analysis, and generate a structured text-based summary.
 
-Please format the output as **plain text** in a clean and professional style.
-- **Do not use Markdown symbols** like '#', '##', or '*' for headings or lists.
-- **Do not use any markup (like HTML tags or Markdown emphasis like '**' or '__') for bolding.** Headings and subheadings should be plain text.
-- Rely on clear structure, line breaks, and spacing for readability and to distinguish sections.
+Please format the output as structured text that can be easily read or further processed (e.g., into HTML from Markdown).
+- For all section headings and subheadings, make them **bold** using Markdown syntax (e.g., "**Your Heading Here**"). Specifically, ensure the following headings, and any other similar section titles, are bolded using this \`**heading text**\` format:
+    - "**Corporate Entrepreneurship Assessment Instrument (CEAI) Survey Analysis**"
+    - "**Overall Results**"
+    - "**Overall Averages (based on provided pre-calculated averages)**"
+    - "**Reliability Analysis:**"
+    - "**Department Breakdown:**"
+    - "**Interpretation:**"
+    - "**Recommendations:**"
+- Use standard Markdown bullet points (e.g., "* Item 1" or "- Item 1") where appropriate for lists.
+- CRITICAL: Do NOT use Markdown heading syntax like '#', '##', '###', etc. Headings should be distinguished by being bold (as described above) and through clear textual structure (e.g., on their own line, possibly followed by a blank line).
+- Avoid using HTML tags directly in your output.
 - Avoid code blocks unless the data itself is code.
-- For lists, if necessary, use simple numbered lists (e.g., "1. Item") or plain text descriptions rather than Markdown bullet points ('*' or '-').
+- Ensure proper line breaks, spacing, and overall structure for easy readability.
 
 Instructions:
 
 1.  **Input Data**: The CSV data is: {{{csvData}}}.
 2.  **Processing**: Validate the input, compute scores, perform reliability analysis, and breakdown by department if applicable.
-3.  **Output**: Return a **plain text-based summary**. Headings and sub-headings should be clear and distinguished by the text's structure and context (not by special characters or markup). The content should be well-structured, including overall averages, reliability metrics (Cronbach’s alpha), and department breakdowns if available.
-
-Ensure the output is well-formatted and easy to understand, adhering strictly to plain text without any special formatting characters or tags.
+3.  **Output**: Return a text-based summary adhering to all the formatting guidelines above. The content should be well-structured, including overall averages, reliability metrics (Cronbach’s alpha), and department breakdowns if available.
 `,
 });
 
