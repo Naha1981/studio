@@ -7,7 +7,7 @@ export default function Home() {
       <div className="w-full max-w-3xl flex-grow">
         <header className="mb-8 text-center py-6 md:py-10">
           <div className="flex items-center justify-center space-x-3">
-            <span className="text-xs sm:text-sm font-mono text-muted-foreground" aria-label="Logo text">AIzaSyBlOMNa9OQ0h2Wtyi1i5-vTgFgskpQGkaI</span>
+            
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary tracking-tight">
               CEAI Insights
             </h1>
